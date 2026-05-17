@@ -19,6 +19,9 @@ jobs:
       - name: Build macOS DMG
         run: ./gradlew jpackage
 
+      - name: Rename DMG
+        run: for f in app/build/jpackage/DemoPublish-*.dmg; do mv "$f" "${f/DemoPublish-/DemoPublish-m1-}"; done
+
       - uses: actions/upload-artifact@v6
         with:
           name: macos-m1.dmg
@@ -38,6 +41,9 @@ jobs:
         env:
           MACOSX_DEPLOYMENT_TARGET: "11.0"
         run: ./gradlew jpackage
+
+      - name: Rename DMG
+        run: for f in app/build/jpackage/DemoPublish-*.dmg; do mv "$f" "${f/DemoPublish-/DemoPublish-intel-}"; done
 
       - uses: actions/upload-artifact@v6
         with:
