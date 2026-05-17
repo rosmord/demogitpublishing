@@ -82,7 +82,7 @@ jobs:
 
       - uses: actions/upload-artifact@v6
         with:
-          name: windows-installers
+          name: windows-exe
           path: |
             app/build/jpackage/*.exe
 
@@ -101,4 +101,4 @@ jobs:
           files: |
             artifacts/macos-dmg/*.dmg
             artifacts/windows-installers/*.msi
-            artifacts/windows-installers/*.exe
+            artifacts/windows-exe/*.exe
