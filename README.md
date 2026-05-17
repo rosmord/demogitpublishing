@@ -15,6 +15,34 @@ The main point is that we use the `org.beryx.runtime` to generate the runtime co
 
 So, on your local computer, running `./gradlew package` will generate the ready-to-use package for your platform, at least on the mac.
 
+### Cross-compilation
+
 To use it for cross-plaform compilation, we use *github actions.* They are configured in `.github/workflows/publish.yml`.
 
+The file is activated when we push a tag whose name starts with `release-` (e.g. `release-1.0`).
+
+~~~yml
+on:
+  push:
+    tags:
+      - 'release-*'
+~~~
+
+It contains a job for building on mac and a job for building on windows. 
+
+A job contains either direct code (such as `./gradlew jpackage`) or calls to *actions*, which are defined in [.github/actions](https://github.com/actions).
+
+
+Note that jobs need to get the code, get the correct java version, build the package, and then updload it in the correct format.
+
+Running
+
+~~~bash
+git tag release-1.0
+git push origin release-1.0
+~~~
+
+Will trigger the creation of the packages. They can be found in the *release* part of the repository (not package).
+
+The windows package works without problem. The mac package is probably an apple silicon one.
 
