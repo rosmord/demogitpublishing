@@ -92,13 +92,14 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v6
         with:
           path: artifacts
 
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           files: |
-            artifacts/macos-dmg/*.dmg
+            artifacts/macos-m1.dmg/*.dmg
+            artifacts/macos-intel.dmg/*.dmg
             artifacts/windows-installers/*.msi
             artifacts/windows-exe/*.exe
