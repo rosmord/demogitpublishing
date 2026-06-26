@@ -1,0 +1,2 @@
+Another file which should be included with the distribution
+

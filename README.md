@@ -8,6 +8,8 @@ The idea is to generate Mac and Windows packages using github for cross-compilat
 
 The application itself is a very basic Swing app. Nothing really interesting there. The main class is `demo.Main`.
 
+The whole interest of the project is its use of `jpackage` and `github` to produce platform-specific distributions automatically.
+
 
 ### Configuration
 
@@ -44,5 +46,11 @@ git push origin release-1.0
 
 Will trigger the creation of the packages. They can be found in the *release* part of the repository (not package).
 
-The windows package works without problem. The mac package is probably an apple silicon one.
+Four distributions are generated:
 
+- mac for “Apple silicon” (a.k.a. M1)
+- mac for Intel processors (older macs)
+- windows with installer (msi)
+- windows executable (exe)
+
+ 
