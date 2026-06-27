@@ -41,6 +41,9 @@ runtime {
         appVersion = project.version.toString()
         imageName = "DemoPublish-${project.version}"
         installerName = "DemoPublish"
+        resourceDir = file("${projectDir}/src/main/packaging")
+
+
 
         val type = project.findProperty("installerType") as String?
         if (type != null) {
@@ -75,8 +78,8 @@ runtime {
 
             if (installerType == "dmg") {
                 installerOptions.addAll(listOf(
-                    "--mac-dmg-content", "${projectDir}/src/dist/documentation.md",
-                    "--mac-dmg-content", "${projectDir}/src/dist/data"
+                    "--mac-dmg-content", "${projectDir}/src/main/dist/documentation.md",
+                    "--mac-dmg-content", "${projectDir}/src/main/dist/data"
                 ))
             }
         }
@@ -88,7 +91,7 @@ runtime {
 if (org.gradle.internal.os.OperatingSystem.current().isWindows) {
     val copyWinExtras by tasks.registering(Copy::class) {
         dependsOn("jpackageImage")
-        from("src/dist")
+        from("src/main/dist")
         into(layout.buildDirectory.dir("jpackage/DemoPublish-${project.version}"))
     }
     tasks.named("jpackage") {

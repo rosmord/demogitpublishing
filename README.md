@@ -13,7 +13,9 @@ The whole interest of the project is its use of `jpackage` and `github` to produ
 
 ### Configuration
 
-The main point is that we use the `org.beryx.runtime` to generate the runtime code. I had to choose version **2.0.1**, because older versions would not work with java 25 and my recent gradle installation.
+The main point is that we use the plugin [org.beryx.runtime](https://badass-runtime-plugin.beryx.org/releases/latest/) to generate the runtime code. I had to choose version **2.0.1**, because older versions would not work with java 25 and my recent gradle installation.
+
+Reading the documentation of this plugin, **and** of [jpackage](https://docs.oracle.com/en/java/javase/25/docs/specs/man/jpackage.html) is important if you want to use them.
 
 So, on your local computer, running `./gradlew package` will generate the ready-to-use package for your platform, at least on the mac.
 
